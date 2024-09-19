@@ -35,7 +35,26 @@ export async function getCabinPrice(id) {
   return data;
 }
 
-export const getCabins = async function () {
+interface Cabin {
+  id: string;
+  name: string;
+  maxCapacity: number;
+  regularPrice: number;
+  discount: number;
+  image: string;
+}
+
+/**
+ * Fetches the list of cabins from the database.
+ *
+ * This function asynchronously retrieves cabin data from the "cabins" table
+ * in the database using Supabase. The data includes the cabin's id, name,
+ * maximum capacity, regular price, discount, and image, sorted by the cabin name.
+ *
+ * @returns {Promise<Cabin[]>} A promise that resolves to an array of cabin objects.
+ * @throws {Error} Throws an error if the cabins could not be loaded.
+ */
+export const getCabins = async function (): Promise<Cabin[]> {
   const { data, error } = await supabase
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
@@ -97,14 +116,14 @@ export async function getBookings(guestId) {
 export async function getBookedDatesByCabinId(cabinId) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
-  today = today.toISOString();
+  // today = today.toISOString();
 
   // Getting all bookings
   const { data, error } = await supabase
     .from("bookings")
     .select("*")
     .eq("cabinId", cabinId)
-    .or(`startDate.gte.${today},status.eq.checked-in`);
+    .or(`startDate.gte.${today.toISOString()},status.eq.checked-in`);
 
   if (error) {
     console.error(error);
