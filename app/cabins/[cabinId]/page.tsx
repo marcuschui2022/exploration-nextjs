@@ -15,6 +15,23 @@ import Image from "next/image";
 //     "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg",
 // };
 
+// // either Static metadata
+// export const metadata: Metadata = {
+//   title: '...',
+// }
+//
+// // or Dynamic metadata
+// export async function generateMetadata({ params }) {
+//   return {
+//     title: '...',
+//   }
+// }
+
+export async function generateMetadata({ params: { cabinId } }) {
+  const { name } = await getCabin(cabinId);
+  return { title: `Cabin ${name}` };
+}
+
 export default async function Page({ params: { cabinId } }) {
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     await getCabin(cabinId);
