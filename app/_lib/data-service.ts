@@ -4,7 +4,23 @@ import { supabase } from "@/app/_lib/supabase";
 /////////////
 // GET
 
-export async function getCabin(id) {
+interface Cabin {
+  id: string;
+  name: string;
+  maxCapacity: number;
+  regularPrice: number;
+  discount: number;
+  image: string;
+  description: string;
+}
+
+/**
+ * Fetches a cabin from the database given its ID.
+ *
+ * @param {string} id - The unique identifier of the cabin.
+ * @return {Promise<Cabin>} A promise that resolves to the cabin object.
+ */
+export async function getCabin(id: string): Promise<Cabin> {
   const { data, error } = await supabase
     .from("cabins")
     .select("*")
@@ -16,9 +32,10 @@ export async function getCabin(id) {
 
   if (error) {
     console.error(error);
+    throw new Error("Cabin could not be loaded");
   }
 
-  return data;
+  return data as Cabin;
 }
 
 export async function getCabinPrice(id) {
@@ -35,7 +52,7 @@ export async function getCabinPrice(id) {
   return data;
 }
 
-interface Cabin {
+interface Cabins {
   id: string;
   name: string;
   maxCapacity: number;
@@ -51,10 +68,10 @@ interface Cabin {
  * in the database using Supabase. The data includes the cabin's id, name,
  * maximum capacity, regular price, discount, and image, sorted by the cabin name.
  *
- * @returns {Promise<Cabin[]>} A promise that resolves to an array of cabin objects.
+ * @returns {Promise<Cabins[]>} A promise that resolves to an array of cabin objects.
  * @throws {Error} Throws an error if the cabins could not be loaded.
  */
-export const getCabins = async function (): Promise<Cabin[]> {
+export const getCabins = async function (): Promise<Cabins[]> {
   const { data, error } = await supabase
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
