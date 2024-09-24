@@ -3,6 +3,19 @@ import CabinList from "@/app/_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
 
+/**
+ * A variable that determines whether to perform revalidation.
+ *
+ * `revalidate` is an integer (in seconds) that acts as a flag to decide if revalidation is required.
+ * A value of 0 typically means no revalidation is necessary, while any non-zero value
+ * indicates that revalidation should be performed.
+ *
+ * Common use cases:
+ *  - In caching mechanisms, where revalidation of cached data might be necessary.
+ *  - Form validation processes, where certain conditions might trigger a revalidation of form inputs.
+ */
+export const revalidate: number = 15; // in seconds
+
 export const metadata: Metadata = {
   title: "Cabins",
 };
