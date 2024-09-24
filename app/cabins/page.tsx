@@ -14,7 +14,7 @@ import Spinner from "@/app/_components/Spinner";
  *  - In caching mechanisms, where revalidation of cached data might be necessary.
  *  - Form validation processes, where certain conditions might trigger a revalidation of form inputs.
  */
-export const revalidate: number = 15; // in seconds
+// export const revalidate: number = 15; // in seconds
 
 export const metadata: Metadata = {
   title: "Cabins",
