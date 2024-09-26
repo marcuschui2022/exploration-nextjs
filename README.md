@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Exploration Next.js
+
+Welcome to the Exploration Next.js repository! This project is dedicated to exploring the various features and
+capabilities of Next.js through building a modern web application.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Packages Used](#packages-used)
+- [Development Tools](#development-tools)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+This project aims to explore the various features and capabilities of Next.js by building an engaging and fully
+functional website for The Wild Oasis. The repository serves as a resourceful guide for best practices and feature
+implementations in a real-world application.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+Make sure you have the following software installed:
+
+- [Node.js](https://nodejs.org/) (version 14 or later)
+- [pnpm](https://pnpm.io/)
+
+### Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/marcuschui2022/exploration-nextjs.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd exploration-nextjs
+    ```
+
+3. Install dependencies using pnpm:
+    ```sh
+    pnpm install
+    ```
+
+4. Create a `.env.local` file in the root directory and add your Supabase credentials:
+    ```env
+    SUPABASE_URL=your-supabase-url
+    SUPABASE_KEY=your-supabase-key
+    ```
+
+### Running the Development Server
+
+Start the development server:
+
+```sh
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the application in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A brief overview of the project structure:
 
-## Learn More
+```plaintext
+.
+├── app/               # Application files
+│   ├── _components/   # React components
+│   ├── _lib/          # Library code
+│   ├── _styles/       # CSS and styles
+│   ├── about/         # About page
+│   ├── account/       # Account related pages
+│   ├── cabins/        # Cabins related pages
+│   ├── error.tsx      # Error page
+│   ├── icon.png       # Icon images
+│   ├── layout.tsx     # Main layout
+│   ├── loading.tsx    # Loading indicator
+│   ├── not-found.tsx  # 404 page
+│   └── page.tsx       # Default page
+├── public/            # Static assets
+│   ├── about-1.jpg    # About page images
+│   ├── about-2.jpg    # About page images
+│   ├── bg.png         # Background image
+│   └── logo.png       # Logo image
+├── .env.local         # Environment variables for Supabase
+├── .eslintrc.js       # ESLint configuration
+├── .prettierrc        # Prettier configuration
+├── next-env.d.ts      # TypeScript types for Next.js
+├── next.config.mjs    # Next.js configuration
+├── package-lock.json  # Lockfile for package manager
+├── package.json       # Project dependencies
+├── pnpm-lock.yaml     # pnpm lockfile
+├── postcss.config.mjs # PostCSS configuration
+├── tailwind.config.ts # Tailwind CSS configuration
+└── README.md          # Project README file
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js pages and routing
+- Static Generation (SSG) and Server-Side Rendering (SSR)
+- API Routes with Next.js
+- Custom Hooks and Utilities
+- Integration with TailwindCSS for styling
+- Environment variable handling
+- Integration with Supabase as a backend service
+- Use of Heroicons for icons
+- Date handling with date-fns
+- Image processing with sharp
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Packages Used
 
-## Deploy on Vercel
+- `@heroicons/react`: Icon components for React
+- `@supabase/supabase-js`: Supabase integration
+- `date-fns`: Date utility functions
+- `sharp`: Image processing
+- `tailwindcss`: Utility-first CSS framework
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Development Tools
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `prettier`: Code formatting
+- `eslint`: Linting JavaScript/TypeScript code
+- `typescript`: Type checking
+- `pnpm`: Package manager
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure your code
+adheres to the project's coding standards.
+
+## License
+
+No license
