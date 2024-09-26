@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import CabinList from "@/app/_components/CabinList";
 import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
+import Filter from "@/app/_components/Filter";
 
 /**
  * A variable that determines whether to perform revalidation.
@@ -42,6 +43,9 @@ export default function Page({ searchParams: { capacity } }: PageProps) {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
       <Suspense fallback={<Spinner />}>
         <CabinList filter={filter} />
       </Suspense>
