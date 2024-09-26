@@ -20,7 +20,15 @@ export const metadata: Metadata = {
   title: "Cabins",
 };
 
-export default function Page() {
+type PageProps = {
+  searchParams: {
+    capacity?: string;
+  };
+};
+
+export default function Page({ searchParams: { capacity } }: PageProps) {
+  const filter = capacity ?? "all";
+
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -35,7 +43,7 @@ export default function Page() {
         Welcome to paradise.
       </p>
       <Suspense fallback={<Spinner />}>
-        <CabinList />
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
