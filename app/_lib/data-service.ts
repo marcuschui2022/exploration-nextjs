@@ -54,7 +54,7 @@ export async function getCabinPrice(id) {
   return data;
 }
 
-interface Cabins {
+export interface Cabins {
   id: string;
   name: string;
   maxCapacity: number;
