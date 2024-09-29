@@ -1,8 +1,9 @@
-import { Metadata } from "next";
+import {Metadata} from "next";
 import CabinList from "@/app/_components/CabinList";
-import { Suspense } from "react";
+import {Suspense} from "react";
 import Spinner from "@/app/_components/Spinner";
 import Filter from "@/app/_components/Filter";
+import ReservationReminder from "@/app/_components/ReservationReminder";
 
 /**
  * A variable that determines whether to perform revalidation.
@@ -53,6 +54,7 @@ export default function Page({ searchParams: { capacity } }: PageProps) {
 
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
