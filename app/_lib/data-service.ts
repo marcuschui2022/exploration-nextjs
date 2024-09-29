@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 /////////////
 // GET
 
-interface Cabin {
+export interface Cabin {
   id: string;
   name: string;
   maxCapacity: number;
@@ -132,7 +132,7 @@ export async function getBookings(guestId) {
   return data;
 }
 
-export async function getBookedDatesByCabinId(cabinId) {
+export async function getBookedDatesByCabinId(cabinId: string) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
   // today = today.toISOString();
