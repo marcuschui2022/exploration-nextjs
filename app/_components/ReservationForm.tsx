@@ -1,6 +1,8 @@
-function ReservationForm() {
+import { Cabin } from "@/app/_lib/data-service";
+
+function ReservationForm({ cabin }: { cabin: Cabin }) {
   // CHANGE
-  const maxCapacity = 23;
+  const { maxCapacity } = cabin;
 
   return (
     <div className="scale-[1.01]">
