@@ -20,6 +20,7 @@ export interface Cabin {
  *
  * @param {string} id - The unique identifier of the cabin.
  * @return {Promise<Cabin>} A promise that resolves to the cabin object.
+ * @throws Will call `notFound()` if the cabin could not be loaded.
  */
 export async function getCabin(id: string): Promise<Cabin> {
   const { data, error } = await supabase
@@ -132,6 +133,13 @@ export async function getBookings(guestId) {
   return data;
 }
 
+/**
+ * Fetches booked dates for a specific cabin given its ID.
+ *
+ * @param {string} cabinId - The ID of the cabin to retrieve booked dates for.
+ * @return {Promise<Date[]>} A promise that resolves to an array of booked dates for the given cabin.
+ * @throws Will throw an error if the bookings cannot be loaded.
+ */
 export async function getBookedDatesByCabinId(cabinId: string) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);
@@ -150,7 +158,7 @@ export async function getBookedDatesByCabinId(cabinId: string) {
   }
 
   // Converting to actual dates to be displayed in the date picker
-  const bookedDates = data
+  return data
     .map((booking) => {
       return eachDayOfInterval({
         start: new Date(booking.startDate),
@@ -158,8 +166,6 @@ export async function getBookedDatesByCabinId(cabinId: string) {
       });
     })
     .flat();
-
-  return bookedDates;
 }
 
 export async function getSettings() {
